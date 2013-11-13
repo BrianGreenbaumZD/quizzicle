@@ -1,4 +1,4 @@
-# Zendesk Satisfaction
+# Quizzicle
 
 Thi is a hackday app that quizzes inquistive agents on their knowledge of Zendesk. Agents can then compare their scores to agents on other Zendesks to see how their skillz stack up.
 
