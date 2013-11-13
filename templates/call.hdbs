@@ -1,0 +1,10 @@
+<div>Incoming call from:</div>
+
+<div class="alert alert-success">
+  This will show some information{{sid}}
+</div>
+
+<div id="answer-deny">
+  <a href="" class='deny btn-danger'>Decline</a>
+  <a href="" class='answer btn-success'>Answer</a>
+</div>
