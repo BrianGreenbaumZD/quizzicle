@@ -12,13 +12,10 @@
   margin-left: 60px;
 }
 
-#answer-deny .deny,
-#answer-deny .answer {
-
+.start {
   line-height: 18px;
   padding: 4px 10px 4px;
   border-radius: 3px;
-
 }
 
 .alert {

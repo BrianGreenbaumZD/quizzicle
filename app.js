@@ -23,7 +23,7 @@
     events: {
       'app.activated': 'onActivation',
       // 'app.activated': 'loadHome'
-      'click .answer': 'onAnswerClick',
+      'click .start': 'onStartClick',
       'click .deny':   'onDenyClick',
       'notification.incoming_call': 'handleCall'
     },
@@ -40,10 +40,10 @@
       this.switchTo('home');
     },
 
-    onAnswerClick: function(event) {
+    onStartClick: function(event) {
       event.preventDefault();
-      console.log('Answering');
-      this.ajax('answerCall');
+      console.log('Clicked Start Button');
+      this.switchTo('question');
     },
 
     onDenyClick: function(event) {
