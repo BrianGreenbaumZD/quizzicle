@@ -51,6 +51,7 @@
 
 .home {
   text-align: center;
+  padding-bottom: 10px;
 
   p {
     font-size: 18px;
@@ -74,21 +75,28 @@
 }
 
 .question {
-  margin: 10px 20px;
+  margin: 5px 20px 10px;
 
   p, #option_group {
-    font-size: 14px;
+    font-size: 13px;
+  }
+
+  #question_counter {
+    font-size: 12px;
+    float: right;
+    margin-top: 7px;
   }
 
   #question_text {
+    font-size: 14px;
   }
 
   #option_group {
-    margin: 10px;
+    margin: 10px 20px 15px;
   }
 
   .radio {
-    margin-bottom: 5px;
+    margin-bottom: 3px;
   }
 
   .submit_answer{

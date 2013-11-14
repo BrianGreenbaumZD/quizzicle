@@ -1,6 +1,5 @@
 <div class="question">
 
-  <p id="question_counter">QUESTION <strong>{{current_question_num}}</strong> / {{num_of_questions}}</p>
   <p id="question_text">{{question}}</p>
 
   <div id="option_group">
@@ -13,4 +12,5 @@
   </div>
 
   <button class='submit_answer btn-info' disabled="true">Submit Answer</button>
+  <span id="question_counter">Question <strong>{{current_question_num}}</strong> / {{num_of_questions}}</span>
 </div>
