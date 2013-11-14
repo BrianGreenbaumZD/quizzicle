@@ -1,11 +1,10 @@
+<div class="home">
+  <p >Click <strong>START</strong> to begin your daily challenge!</p>
 
-<div id="top_msg">Click <strong>START</strong> to begin your daily challenge!</div>
+  <a href="" class='start btn-info'>START</a>
 
-<div id="start_button">
-	<a href="" class='start btn-success'>Answer</a>
-</div>
-
-<div id="button_links">
-	<div><a id="learn_more_link" href="">Learn more</a></div>
-	<div><a id="leaderboard_link" href="">Leaderboard</a></div
+  <div class="links">
+    <a id="learn_more_link" href="">Learn more</a>
+    <a id="leaderboard_link" href="">Leaderboard</a>
+  </div>
 </div>

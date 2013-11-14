@@ -1,12 +1,22 @@
 &.apps.popover {
   height: 300px;
   width: 400px;
-  font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;	
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+
+  .popover-inner>header {
+    background-image: url('http://localhost:4567/popsicles_small.png');
+    background-repeat: no-repeat;
+    background-position: 283px 8px;
+
+    .logo {
+      display: none;
+    }
+  }
 }
 
 .row-fluid {
-    margin-top:5px;
-    margin-left:85px;
+  margin-top:5px;
+  margin-left:85px;
 }
 
 #answer-deny {
@@ -17,20 +27,36 @@
   margin-top: 10px;
 }
 
+.home {
+  text-align: center;
 
-#top_msg {
-	font-size: 16px;
-	padding: 20px 80px;
-	text-align: center;
+  p {
+    font-size: 18px;
+    padding: 40px 80px;
+    text-align: center;
+    line-height: 26px;
+  }
+
+  .start {
+    line-height: 18px;
+    padding: 7px 50px;
+    border-radius: 3px;
+    display: inline-block;
+  }
+
+  .links {
+    padding: 10px;
+    margin-top: 50px;
+
+    #learn_more_link {
+      float: left;
+    }
+
+    #leaderboard_link {
+      float: right;
+    }
+  }
 }
-
-.start {
-  line-height: 18px;
-  padding: 4px 10px 4px;
-  border-radius: 3px;
-}
-
-
 
 
 
