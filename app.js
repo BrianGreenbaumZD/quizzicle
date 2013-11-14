@@ -26,15 +26,15 @@
       'click #learn_more_link': 'onLearnMoreClick',
       'click .submit_answer': 'submitAnswer',
       'click .next_question': 'nextQuestion',
-      'click .home': 'goToHome',
+      // 'click .home': 'goToHome',
       'click input[name="question_options"]': 'answerSelected'
     },
 
-    goToHome: function () {
-      event.preventDefault();
-      console.log("clicked on home link")
-      this.switchTo('home');
-    },
+    // goToHome: function () {
+    //   event.preventDefault();
+    //   console.log("clicked on home link")
+    //   this.switchTo('home');
+    // },
 
     onActivation: function() {
       var tag = this.window.document.createElement('script');
