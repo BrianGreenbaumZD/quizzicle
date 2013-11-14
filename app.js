@@ -113,8 +113,24 @@
 
     onLeaderboardClick: function(event) {
       event.preventDefault();
-      console.log('Clicked Leaderboard Link');
-      this.switchTo('leaderboard');
+      
+      var User = Parse.Object.extend('users');
+      var query = new Parse.Query(User);
+      query.descending("total_score");
+      query.find({ 
+        success: function(results) {
+          var users = [];
+          for(var i = 0; i < results.length; i ++) {
+            var user_attr = results[i].attributes;
+            var user = { user_name: user_attr.user_name, total_score: user_attr.total_score };
+            users.push(user);
+          }
+          this.switchTo('leaderboard', {
+            users: users
+          });
+        }.bind(this) 
+      });
+      
     },
 
 
@@ -172,7 +188,6 @@
         }.bind(this), 
 
         error: function(userAnswer, error) {
-          debugger
           console.log("We got some problems");
         }.bind(this)
 

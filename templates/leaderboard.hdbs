@@ -1,1 +1,11 @@
-<h1>Leaderboard</h1>
+<div class="leaderboard">
+
+<h2>Leaderboard</h2>
+
+<ol>
+  {{#each users}}
+    <li><strong>{{user_name}}</strong> - {{total_score}} points</li>
+  {{/each}}
+</ol>
+
+</div>
