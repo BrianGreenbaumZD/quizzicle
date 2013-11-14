@@ -1,0 +1,9 @@
+<div class="answer">
+
+  
+  <p id="answer_text" class="correct">Correct!</p>
+
+  <p id="points">You received <strong>10</strong></p>
+
+
+</div>
