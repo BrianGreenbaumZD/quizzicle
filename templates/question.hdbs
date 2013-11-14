@@ -11,6 +11,6 @@
     {{/each}}
   </div>
 
-  <button href="" class='submit_answer btn-info'>Submit Answer</button>
+  <button href="" class='submit_answer btn-info' disabled="true">Submit Answer</button>
 
 </div>

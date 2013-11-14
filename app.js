@@ -22,7 +22,8 @@
       'click .deny':   'onDenyClick',
       'click #leaderboard_link': 'onLeaderboardClick',
       'click #learn_more_link': 'onLearnMoreClick',
-      'click .submit_answer': 'submitAnswer'
+      'click .submit_answer': 'submitAnswer',
+      'click input[name="question_options"]': 'answerSelected'
     },
 
 
@@ -167,6 +168,10 @@
         this.choices = choices;
         this.goToQuestionView();
       }.bind(this) });
+    },
+
+    answerSelected: function() {
+      this.$('button.submit_answer').attr('disabled', false);
     },
 
     submitAnswer: function() {

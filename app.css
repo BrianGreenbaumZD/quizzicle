@@ -32,6 +32,16 @@
   padding: 7px 50px;
   border-radius: 3px;
   display: inline-block;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.25s ease 0s;
+  -o-transition: box-shadow 0.25s ease 0s;
+  -ms-transition: box-shadow 0.25s ease 0s;
+  -moz-transition: box-shadow 0.25s ease 0s;
+  -webkit-transition: box-shadow 0.25s ease 0s;
+
+  &:hover {
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+  }
 }
 
 .home {
@@ -81,6 +91,13 @@
     padding: 7px 50px;
     border-radius: 3px;
     display: inline-block;
+
+    &:disabled {
+      color: #999;
+      background-color: #DDD;
+      background-image: none;
+      cursor: not-allowed;
+    }
   }
 
 }
@@ -89,6 +106,7 @@
 .answer {
 
   text-align: center;
+  height: 241px;
 
   p, #option_group {
     font-size: 16px;
@@ -97,8 +115,8 @@
   h2 {
     font-size: 20px;
     font-weight: bold;
-
-  }  
+    padding: 40px 0px 20px;
+  }
 
   .correct {
     color: green;
