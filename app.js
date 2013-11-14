@@ -8,7 +8,7 @@
     question_object_id: '',
     choices: [],
     selected_choice_id: -1,
-    user_total_score: 0,
+  //  user_total_score: 0,
     question_index: 0,
 
     requests: {
@@ -49,11 +49,12 @@
       var query = new Parse.Query(UserAnswers);
       query.equalTo("user_id", this.currentUser().id());
       query.find({ success: function(results) {
-        // this.user_total_score = 0;
+        var user_total_score = 0;
         for (var i = 0; i < results.length; i++) {
-          this.user_total_score = results[i].attributes.score + this.user_total_score;
+          user_total_score = results[i].attributes.score + user_total_score;
         }
-        this.user_obj.set("total_score", this.user_total_score);
+        this.user_total_score = user_total_score;
+        this.user_obj.set("total_score", user_total_score);
         this.user_obj.save();
         this.goToAnswerView(userAnswer);
       }.bind(this) });
@@ -65,7 +66,6 @@
       var query = new Parse.Query(User);
       query.equalTo("user_id", this.currentUser().id());
       query.find({ success: function(results) {
-        // this.user_total_score = 0;
         if (results.length < 1) {
           // Create user
           var User = Parse.Object.extend('users');
