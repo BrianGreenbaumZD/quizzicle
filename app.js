@@ -4,6 +4,9 @@
 //    BASE_URL: "http://localhost:8000",
     window: this,
 
+    question: 'Placeholder',
+    choices: [],
+
     requests: {
 
       answerCall: function() {
@@ -48,6 +51,10 @@
 
       console.log('Home');
       this.switchTo('home');
+
+      Parse.initialize("YhoFdKDxkA9UPKGmHuFWhuJVmrDcYWCoUdhzPkHl", "N6cNSC5YDS9kJe6lECGXP1CnDd32xvFdGKMGsR6o");
+
+      this.pullQuestion();
     },
 
     onStartClick: function(event) {
@@ -74,6 +81,24 @@
       console.log('Denying');
       this.ajax('denyCall');
       this.switchTo('nocall');
+    },
+
+    pullQuestion: function() {
+      var Questions = Parse.Object.extend('questions');
+      var query = new Parse.Query(Questions);
+      query.equalTo('ID', 10);
+      query.find({ success: function(results) {
+        return this.pullChoices(results[0].attributes.ID);
+      }.bind(this) });
+    },
+
+    pullChoices: function(qid) {
+      var Choices = Parse.Object.extend('choice');
+      var query = new Parse.Query(Choices);
+      query.equalTo('question_id', qid);
+      query.find({ success: function(results) {
+debugger
+      } });
     }
   };
 
