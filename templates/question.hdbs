@@ -3,15 +3,14 @@
   <p id="question_counter">QUESTION <strong>{{current_question_num}}</strong> / {{num_of_questions}}</p>
   <p id="question_text">{{question}}</p>
 
-
-  <div id="option_group"">
+  <div id="option_group">
     {{#each choices}}
-    <label class="radio">
-      <input type="radio" name="question_options" id="option_{{id}}" value="{{id}}">{{description}}
-    </label>
+      <label class="radio">
+        <input type="radio" name="question_options" id="option_{{id}}" value="{{id}}" />
+        {{description}}
+      </label>
     {{/each}}
   </div>
 
-  <button href="" class='submit_answer btn-info' disabled="true">Submit Answer</button>
-
+  <button class='submit_answer btn-info' disabled="true">Submit Answer</button>
 </div>

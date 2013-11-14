@@ -9,7 +9,7 @@
 
   <p id="total_score">Your total score to date is <strong>{{total_score}}</strong>.<p>
 
-  <a href="" class='next_question btn-info'>Next Question</a>
+  <button class='next_question btn-info'>Next Question</button>
 
 
 </div>

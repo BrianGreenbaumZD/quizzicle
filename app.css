@@ -8,6 +8,11 @@
     background-repeat: no-repeat;
     background-position: 373px 7px;
 
+    h3 {
+      font-size: 14px;
+      line-height: 13px;
+    }
+
     .logo {
       display: none;
     }
@@ -86,7 +91,7 @@
     margin-bottom: 5px;
   }
 
-  .submit_answer .next_question {
+  .submit_answer{
     line-height: 18px;
     padding: 7px 50px;
     border-radius: 3px;
@@ -104,7 +109,6 @@
 
 
 .answer {
-
   text-align: center;
   height: 241px;
 
@@ -124,6 +128,21 @@
 
   .incorrect {
     color: red;
+  }
+
+  .next_question {
+    line-height: 18px;
+    padding: 7px 50px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-top: 30px;
+
+    &:disabled {
+      color: #999;
+      background-color: #DDD;
+      background-image: none;
+      cursor: not-allowed;
+    }
   }
 }
 
