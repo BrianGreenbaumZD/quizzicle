@@ -34,12 +34,11 @@
       var header = this.window.document.getElementsByTagName('head')[0];
       header.appendChild(tag);
 
-
-
       console.log('Home');
+      Parse.initialize("YhoFdKDxkA9UPKGmHuFWhuJVmrDcYWCoUdhzPkHl", "N6cNSC5YDS9kJe6lECGXP1CnDd32xvFdGKMGsR6o");
       this.switchTo('home');
 
-      Parse.initialize("YhoFdKDxkA9UPKGmHuFWhuJVmrDcYWCoUdhzPkHl", "N6cNSC5YDS9kJe6lECGXP1CnDd32xvFdGKMGsR6o");
+
     },
 
     calculateTotalScore: function (userAnswer) {
@@ -49,16 +48,49 @@
       query.find({ success: function(results) {
         // this.user_total_score = 0;
         for (var i = 0; i < results.length; i++) {
-          console.log(results[i].attributes.score)
-          this.user_total_score = parseInt(results[i].attributes.score) + this.user_total_score;
+          this.user_total_score = results[i].attributes.score + this.user_total_score;
         }
+        this.user_obj.set("total_score", this.user_total_score);
+        this.user_obj.save();
         this.goToAnswerView(userAnswer);
+      }.bind(this) });
+    },
+
+
+    checkUserExists: function () {
+      var User = Parse.Object.extend('users');
+      var query = new Parse.Query(User);
+      query.equalTo("user_id", this.currentUser().id());
+      query.find({ success: function(results) {
+        // this.user_total_score = 0;
+        if (results.length < 1) {
+          // Create user
+          var User = Parse.Object.extend('users');
+          var user = new User();
+          user.set("user_id", this.currentUser().id());
+          user.set("user_name", this.currentUser().name());
+
+          user.save(null, {
+            success: function(user) {
+              this.user_obj = user;
+          }.bind(this),
+
+          error: function(user, error) {
+            console.log("We got some problems");
+
+          }.bind(this) 
+
+          });
+        }
+        else {
+          this.user_obj = results[0];
+        }
       }.bind(this) });
     },
 
     onStartClick: function(event) {
       event.preventDefault();
-      console.log('Clicked Start Button');
+      this.checkUserExists();
       this.pullQuestion();
     },
 
@@ -140,6 +172,7 @@
         }.bind(this), 
 
         error: function(userAnswer, error) {
+          debugger
           console.log("We got some problems");
         }.bind(this)
 
