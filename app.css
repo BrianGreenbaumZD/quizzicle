@@ -212,6 +212,10 @@
     margin: 5px 0px;
     padding: 4px 15px 4px 30px;
 
+    &.current {
+      background-color: #acd442;
+    }
+
     &:nth-child(odd) {
       background-color: #eee;
     }

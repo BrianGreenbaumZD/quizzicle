@@ -136,7 +136,12 @@
           var users = [];
           for(var i = 0; i < results.length; i ++) {
             var user_attr = results[i].attributes;
-            var user = { user_name: user_attr.user_name, total_score: user_attr.total_score };
+            var isCurrentUser = results[i].attributes.user_id == this.currentUser().id();
+            var user = {
+                        user_name: user_attr.user_name,
+                        total_score: user_attr.total_score,
+                        current_user: isCurrentUser
+                      };
             users.push(user);
           }
           this.switchTo('leaderboard', {

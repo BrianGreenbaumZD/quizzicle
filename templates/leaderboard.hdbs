@@ -4,7 +4,11 @@
 
 <ol>
   {{#each users}}
-    <li><strong>{{user_name}}</strong><span class="score">{{total_score}} points</span></li>
+    {{#if current_user}}
+      <li class="current"><strong>{{user_name}}</strong><span class="score">{{total_score}} points</span></li>
+    {{else}}
+      <li><strong>{{user_name}}</strong><span class="score">{{total_score}} points</span></li>
+    {{/if}}
   {{/each}}
 </ol>
 
