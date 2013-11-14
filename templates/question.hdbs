@@ -1,26 +1,16 @@
 <div class="question">
 
-  <p id="question_text">What's the keyboard shortcut for search?</p>
+  <p id="question_text">{{question}}</p>
+
 
   <div id="option_group">
+    {{#each choices}}
     <label class="radio">
-      <input type="radio" name="question_options" id="option_1" value="option_1">A) ctrl + alt + f</input>
+      <input type="radio" name="question_options" id="option_1" value="{{id}}">{{description}}</input>
     </label>
-    <label class="radio">
-      <input type="radio" name="question_options" id="option_2" value="option_2">B) ctrl + f</input>
-    </label>
-    <label class="radio">
-      <input type="radio" name="question_options" id="option_3" value="option_3">C) ctrl + alt + s</input>
-    </label>
-    <label class="radio">
-      <input type="radio" name="question_options" id="option_4" value="option_4">D) ctrl + s</input>
-    </label>
+    {{/each}}
   </div>
 
   <a href="" class='submit btn-info'>Submit Answer</a>
-
-  <div class="timer">
-    <div class="mask"></div>
-  </div>
 
 </div>

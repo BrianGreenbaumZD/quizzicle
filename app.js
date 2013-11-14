@@ -4,7 +4,7 @@
 //    BASE_URL: "http://localhost:8000",
     window: this,
 
-    question: 'Placeholder',
+    question: 'QUESTION',
     choices: [],
 
     requests: {
@@ -53,14 +53,19 @@
       this.switchTo('home');
 
       Parse.initialize("YhoFdKDxkA9UPKGmHuFWhuJVmrDcYWCoUdhzPkHl", "N6cNSC5YDS9kJe6lECGXP1CnDd32xvFdGKMGsR6o");
-
-      this.pullQuestion();
     },
 
     onStartClick: function(event) {
       event.preventDefault();
       console.log('Clicked Start Button');
-      this.switchTo('question');
+      this.pullQuestion();
+    },
+
+    goToQuestionView: function() {
+      this.switchTo('question', {
+        question: this.question,
+        choices: this.choices
+      });
     },
 
     onLeaderboardClick: function(event) {
@@ -88,6 +93,7 @@
       var query = new Parse.Query(Questions);
       query.equalTo('ID', 10);
       query.find({ success: function(results) {
+        this.question = results[0].attributes.question_description;
         return this.pullChoices(results[0].attributes.ID);
       }.bind(this) });
     },
@@ -97,8 +103,16 @@
       var query = new Parse.Query(Choices);
       query.equalTo('question_id', qid);
       query.find({ success: function(results) {
-debugger
-      } });
+
+        var choices = [];
+        for(var i = 0; i < results.length; i ++) {
+          var choice = { id: results[i].attributes.ID, description: results[i].attributes.choice_description };
+          choices.push(choice);
+        }
+
+        this.choices = choices;
+        this.goToQuestionView();
+      }.bind(this) });
     }
   };
 
