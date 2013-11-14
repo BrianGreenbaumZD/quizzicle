@@ -1,10 +1,10 @@
 <div class="leaderboard">
 
-<h2>Leaderboard</h2>
+<h4>Leaderboard</h4>
 
 <ol>
   {{#each users}}
-    <li><strong>{{user_name}}</strong> - {{total_score}} points</li>
+    <li><strong>{{user_name}}</strong><span class="score">{{total_score}} points</span></li>
   {{/each}}
 </ol>
 

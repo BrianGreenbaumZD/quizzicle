@@ -22,19 +22,19 @@
       'click .start': 'onStartClick',
       'click .deny':   'onDenyClick',
       'click #leaderboard_link': 'onLeaderboardClick',
-      'click .leaderboard': 'onLeaderboardClick',
+      'click button.leaderboard': 'onLeaderboardClick',
       'click #learn_more_link': 'onLearnMoreClick',
       'click .submit_answer': 'submitAnswer',
       'click .next_question': 'nextQuestion',
-      // 'click .home': 'goToHome',
+      'click a#home': 'goToHome',
       'click input[name="question_options"]': 'answerSelected'
     },
 
-    // goToHome: function () {
-    //   event.preventDefault();
-    //   console.log("clicked on home link")
-    //   this.switchTo('home');
-    // },
+    goToHome: function (event) {
+      event.preventDefault();
+      console.log("clicked on home link")
+      this.switchTo('home');
+    },
 
     onActivation: function() {
       var tag = this.window.document.createElement('script');
@@ -126,6 +126,7 @@
 
     onLeaderboardClick: function(event) {
       event.preventDefault();
+      console.log('Go to leaderboard');
       
       var User = Parse.Object.extend('users');
       var query = new Parse.Query(User);

@@ -178,11 +178,30 @@
 }
 
 .leaderboard {
-  margin: 30px 20px;
+  margin: 0px 20px 35px;
+
+  ol {
+    margin-bottom: 20px;
+  }
+
+  h4 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: normal;
+  }
 
   li {
-    font-size: 16px;
+    font-size: 13px;
     margin: 5px 0px;
+    padding: 4px 15px 4px 30px;
+
+    &:nth-child(odd) {
+      background-color: #eee;
+    }
+
+    .score {
+      float: right;
+    }
   }
 
   #home {
