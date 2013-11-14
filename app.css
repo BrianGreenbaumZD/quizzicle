@@ -142,7 +142,7 @@
     color: red;
   }
 
-  .next_question {
+  .next_question, .leaderboard {
     line-height: 18px;
     padding: 7px 50px;
     border-radius: 3px;
@@ -156,6 +156,13 @@
       cursor: not-allowed;
     }
   }
+
+  #done {
+    font-size: 14px;
+    margin-top: 20px;
+    margin-bottom: -20px;
+    padding: 0px 20px;
+  }
 }
 
 .leaderboard {
@@ -164,6 +171,10 @@
   li {
     font-size: 16px;
     margin: 5px 0px;
+  }
+
+  #home {
+    float: right;
   }
 }
 

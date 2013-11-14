@@ -26,9 +26,15 @@
       'click #learn_more_link': 'onLearnMoreClick',
       'click .submit_answer': 'submitAnswer',
       'click .next_question': 'nextQuestion',
+      'click .home': 'goToHome',
       'click input[name="question_options"]': 'answerSelected'
     },
 
+    goToHome: function () {
+      event.preventDefault();
+      console.log("clicked on home link")
+      this.switchTo('home');
+    },
 
     onActivation: function() {
       var tag = this.window.document.createElement('script');
@@ -41,7 +47,6 @@
       console.log('Home');
       Parse.initialize("YhoFdKDxkA9UPKGmHuFWhuJVmrDcYWCoUdhzPkHl", "N6cNSC5YDS9kJe6lECGXP1CnDd32xvFdGKMGsR6o");
       this.switchTo('home');
-
 
     },
 
@@ -115,7 +120,7 @@
         selected_choice_id: this.selected_choice_id,
         score: this.score,
         total_score: this.user_total_score,
-        num_questions_remaining: this.questions.length - this.question_index -1
+        num_questions_remaining: this.questions.length - this.question_index - 1
       });
     },
 

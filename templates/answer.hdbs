@@ -12,7 +12,7 @@
   {{#if num_questions_remaining}}
     <button class='next_question btn-info'>Next Question</button>
   {{else}}
-    <p>You've answered all of the questions!</p>
+    <p id="done">You've answered all of the questions!</p>
     <button class='leaderboard btn-info'>See How Well You Compare</button>
   {{/if}}
 

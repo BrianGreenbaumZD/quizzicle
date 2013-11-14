@@ -8,4 +8,6 @@
   {{/each}}
 </ol>
 
+<a id="home" href="">Go Home</a>
+
 </div>
