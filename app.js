@@ -9,6 +9,7 @@
     choices: [],
     selected_choice_id: -1,
     user_total_score: 0,
+    question_index: 0,
 
     requests: {
 
@@ -22,7 +23,8 @@
       'click .deny':   'onDenyClick',
       'click #leaderboard_link': 'onLeaderboardClick',
       'click #learn_more_link': 'onLearnMoreClick',
-      'click .submit_answer': 'submitAnswer'
+      'click .submit_answer': 'submitAnswer',
+      'click .next_question': 'nextQuestion'
     },
 
 
@@ -91,14 +93,16 @@
     onStartClick: function(event) {
       event.preventDefault();
       this.checkUserExists();
-      this.pullQuestion();
+      this.pullQuestions();
     },
 
     goToQuestionView: function() {
       this.switchTo('question', {
-        question: this.question,
+        question: this.questions[this.question_index].attributes.question_description,
         question_id: this.question_id,
-        choices: this.choices
+        choices: this.choices,
+        num_of_questions: this.questions.length,
+        current_question_num: this.question_index + 1
       });
     },
 
@@ -140,16 +144,33 @@
       this.switchTo('learn_more');
     },
 
-    pullQuestion: function() {
+    pullQuestions: function() {
       var Questions = Parse.Object.extend('questions');
       var query = new Parse.Query(Questions);
-      query.equalTo('ID', this.question_id);
-      query.find({ success: function(results) {
-        this.question = results[0].attributes.question_description;
-        this.question_object_id = results[0].id;
-        this.question_object = results[0];
-        return this.pullChoices(results[0].attributes.ID);
-      }.bind(this) });
+      query.ascending("createdAt");
+     // query.equalTo('ID', this.question_id);
+      query.find({ 
+        success: function(results) {
+          this.questions = results;
+          // this.questions = [];
+          // this.question = results[0].attributes.question_description;
+          // this.question_object_id = results[0].id;
+          // this.question_object = results[0];         
+         // return this.pullChoices(results[0].attributes.ID);
+          this.selectQuestion();
+        }.bind(this)
+      });
+    },
+
+    selectQuestion: function() {
+      var question = this.questions[this.question_index];
+      return this.pullChoices(question.attributes.ID);
+    },
+
+    nextQuestion: function() {
+      event.preventDefault();
+      this.question_index++;
+      this.selectQuestion();
     },
 
     pullChoices: function(qid) {

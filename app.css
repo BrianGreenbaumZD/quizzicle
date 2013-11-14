@@ -76,7 +76,7 @@
     margin-bottom: 5px;
   }
 
-  .submit_answer {
+  .submit_answer .next_question {
     line-height: 18px;
     padding: 7px 50px;
     border-radius: 3px;

@@ -1,9 +1,10 @@
 <div class="question">
 
+  <p id="question_counter">QUESTION <strong>{{current_question_num}}</strong> / {{num_of_questions}}</p>
   <p id="question_text">{{question}}</p>
 
 
-  <div id="option_group" data-foo="{{foo}}">
+  <div id="option_group"">
     {{#each choices}}
     <label class="radio">
       <input type="radio" name="question_options" id="option_{{id}}" value="{{id}}">{{description}}
