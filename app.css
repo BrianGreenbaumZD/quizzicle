@@ -217,12 +217,12 @@
       margin-left: 10px;
     }
 
-    &.current {
-      background-color: #acd442;
-    }
-
     &:nth-child(odd) {
       background-color: #eee;
+    }
+
+    &.current {
+      background-color: #acd442;
     }
 
     .score {
