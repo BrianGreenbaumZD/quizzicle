@@ -2,6 +2,7 @@
 
   return {
 //    BASE_URL: "http://localhost:8000",
+    window: this,
 
     requests: {
 
@@ -38,6 +39,13 @@
     },
 
     onActivation: function() {
+      var tag = this.window.document.createElement('script');
+      tag.src = 'https://www.parsecdn.com/js/parse-1.2.12.min.js';
+      tag.type = 'text/javascript';
+
+      var header = this.window.document.getElementsByTagName('head')[0];
+      header.appendChild(tag);
+
       console.log('Home');
       this.switchTo('home');
     },
