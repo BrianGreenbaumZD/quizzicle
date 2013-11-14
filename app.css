@@ -49,6 +49,22 @@
   }
 }
 
+.learn {
+  text-align: center;
+  padding-bottom: 20px;
+  background-image: url('http://localhost:4567/greetings.png');
+  background-repeat: no-repeat;
+  background-position: 143px 141px;
+
+  p {
+    font-size: 14px;
+    padding: 10px 40px 30px;
+    text-align: center;
+    line-height: 19px;
+    margin-bottom: 80px;
+  }
+}
+
 .home {
   text-align: center;
   padding-bottom: 10px;
