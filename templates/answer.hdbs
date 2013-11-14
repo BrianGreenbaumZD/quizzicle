@@ -9,7 +9,11 @@
 
   <p id="total_score">Your total score to date is <strong>{{total_score}}</strong>.<p>
 
-  <button class='next_question btn-info'>Next Question</button>
-
+  {{#if num_questions_remaining}}
+    <button class='next_question btn-info'>Next Question</button>
+  {{else}}
+    <p>You've answered all of the questions!</p>
+    <button class='leaderboard btn-info'>See How Well You Compare</button>
+  {{/if}}
 
 </div>

@@ -1,5 +1,5 @@
 &.apps.popover {
-  height: 300px;
+  height: auto;
   width: 400px;
   font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
 
@@ -103,6 +103,10 @@
       background-image: none;
       cursor: not-allowed;
     }
+  }
+
+  #question_counter {
+    margin-bottom: 15px;
   }
 
 }

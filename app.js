@@ -22,6 +22,7 @@
       'click .start': 'onStartClick',
       'click .deny':   'onDenyClick',
       'click #leaderboard_link': 'onLeaderboardClick',
+      'click .leaderboard': 'onLeaderboardClick',
       'click #learn_more_link': 'onLearnMoreClick',
       'click .submit_answer': 'submitAnswer',
       'click .next_question': 'nextQuestion',
@@ -109,10 +110,12 @@
 
     goToAnswerView: function() {
       event.preventDefault();
+      console.log(this.questions.length - this.question_index - 1);
       this.switchTo('answer', {
         selected_choice_id: this.selected_choice_id,
         score: this.score,
-        total_score: this.user_total_score
+        total_score: this.user_total_score,
+        num_questions_remaining: this.questions.length - this.question_index -1
       });
     },
 
@@ -153,11 +156,6 @@
       query.find({ 
         success: function(results) {
           this.questions = results;
-          // this.questions = [];
-          // this.question = results[0].attributes.question_description;
-          // this.question_object_id = results[0].id;
-          // this.question_object = results[0];         
-         // return this.pullChoices(results[0].attributes.ID);
           this.selectQuestion();
         }.bind(this)
       });
