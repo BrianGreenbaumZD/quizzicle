@@ -6,11 +6,11 @@
   <div id="option_group">
     {{#each choices}}
     <label class="radio">
-      <input type="radio" name="question_options" id="option_1" value="{{id}}">{{description}}</input>
+      <input type="radio" name="question_options" id="option_{{id}}" value="{{id}}">{{description}}
     </label>
     {{/each}}
   </div>
 
-  <a href="" class='submit btn-info'>Submit Answer</a>
+  <button href="" class='submit_answer btn-info'>Submit Answer</button>
 
 </div>

@@ -1,45 +1,30 @@
 (function() {
 
   return {
-//    BASE_URL: "http://localhost:8000",
     window: this,
 
     question: 'QUESTION',
+    question_id: 9,
+    question_object_id: '',
     choices: [],
+    selected_choice_id: -1,
+    question_object: '',
 
     requests: {
 
-      answerCall: function() {
-        return {
-          url: "%@/answer".fmt(this.BASE_URL)
-        };
-      },
-
-      denyCall: function() {
-        return {
-          url: "%@/deny".fmt(this.BASE_URL)
-        };
-      }
 
 
     },
 
     events: {
       'app.activated': 'onActivation',
-      // 'app.activated': 'loadHome'
       'click .start': 'onStartClick',
       'click .deny':   'onDenyClick',
       'click #leaderboard_link': 'onLeaderboardClick',
       'click #learn_more_link': 'onLearnMoreClick',
-      'notification.incoming_call': 'handleCall'
+      'click .submit_answer': 'submitAnswer'
     },
 
-    handleCall: function(data) {
-      console.log('incoming call');
-      console.log(data);
-      this.switchTo('call', { sid: data });
-      this.popover();
-    },
 
     onActivation: function() {
       var tag = this.window.document.createElement('script');
@@ -48,6 +33,8 @@
 
       var header = this.window.document.getElementsByTagName('head')[0];
       header.appendChild(tag);
+
+
 
       console.log('Home');
       this.switchTo('home');
@@ -64,7 +51,14 @@
     goToQuestionView: function() {
       this.switchTo('question', {
         question: this.question,
+        question_id: this.question_id,
         choices: this.choices
+      });
+    },
+
+    goToAnswerView: function() {
+      this.switchTo('answer', {
+        selected_choice_id: this.selected_choice_id
       });
     },
 
@@ -81,19 +75,14 @@
       this.switchTo('learn_more');
     },
 
-    onDenyClick: function(event) {
-      event.preventDefault();
-      console.log('Denying');
-      this.ajax('denyCall');
-      this.switchTo('nocall');
-    },
-
     pullQuestion: function() {
       var Questions = Parse.Object.extend('questions');
       var query = new Parse.Query(Questions);
-      query.equalTo('ID', 10);
+      query.equalTo('ID', this.question_id);
       query.find({ success: function(results) {
         this.question = results[0].attributes.question_description;
+        this.question_object_id = results[0].id;
+        this.question_object = results[0];
         return this.pullChoices(results[0].attributes.ID);
       }.bind(this) });
     },
@@ -113,6 +102,31 @@
         this.choices = choices;
         this.goToQuestionView();
       }.bind(this) });
+    },
+
+    submitAnswer: function() {
+      event.preventDefault();
+      this.selected_choice_id = this.$('input[name="question_options"]:checked').val();
+
+      var UserAnswer = Parse.Object.extend('user_answers');
+      var userAnswer = new UserAnswer();
+
+      userAnswer.set("choice_id", parseInt(this.selected_choice_id));
+      // userAnswer.set("question_id", this.question_object_id);
+      userAnswer.set("user_id", this.currentUser().id());  
+
+      userAnswer.save(null, {
+        success: function(userAnswer) {
+          this.goToAnswerView(userAnswer);
+        }.bind(this), 
+
+        error: function(userAnswer, error) {
+          console.log("We got some problems");
+          debugger
+        }.bind(this)
+
+      });
+
     }
   };
 

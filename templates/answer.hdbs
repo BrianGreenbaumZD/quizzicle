@@ -1,6 +1,8 @@
 <div class="answer">
 
   
+  <p>You chose: {{selected_choice_id}}</p>
+
   <p id="answer_text" class="correct">Correct!</p>
 
   <p id="points">You received <strong>10</strong></p>
