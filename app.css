@@ -1,6 +1,7 @@
 &.apps.popover {
   height: 300px;
   width: 400px;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;	
 }
 
 .row-fluid {
@@ -12,13 +13,24 @@
   margin-left: 60px;
 }
 
+.alert {
+  margin-top: 10px;
+}
+
+
+#top_msg {
+	font-size: 16px;
+	padding: 20px 80px;
+	text-align: center;
+}
+
 .start {
   line-height: 18px;
   padding: 4px 10px 4px;
   border-radius: 3px;
 }
 
-.alert {
-  margin-top: 10px;
-}
+
+
+
 

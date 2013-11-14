@@ -25,6 +25,8 @@
       // 'app.activated': 'loadHome'
       'click .start': 'onStartClick',
       'click .deny':   'onDenyClick',
+      'click #leaderboard_link': 'onLeaderboardClick',
+      'click #learn_more_link': 'onLearnMoreClick',
       'notification.incoming_call': 'handleCall'
     },
 
@@ -44,6 +46,19 @@
       event.preventDefault();
       console.log('Clicked Start Button');
       this.switchTo('question');
+    },
+
+    onLeaderboardClick: function(event) {
+      event.preventDefault();
+      console.log('Clicked Leaderboard Link');
+      this.switchTo('leaderboard');
+    },
+
+
+    onLearnMoreClick: function(event) {
+      event.preventDefault();
+      console.log('Clicked Learn More Link');
+      this.switchTo('learn_more');
     },
 
     onDenyClick: function(event) {
