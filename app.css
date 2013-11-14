@@ -4,9 +4,9 @@
   font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
 
   .popover-inner>header {
-    background-image: url('http://localhost:4567/popsicles_small.png');
+    background-image: url('http://localhost:4567/popsicle_logo2.png');
     background-repeat: no-repeat;
-    background-position: 283px 8px;
+    background-position: 373px 7px;
 
     .logo {
       display: none;
