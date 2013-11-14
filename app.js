@@ -24,7 +24,7 @@
       'click #leaderboard_link': 'onLeaderboardClick',
       'click #learn_more_link': 'onLearnMoreClick',
       'click .submit_answer': 'submitAnswer',
-      'click .next_question': 'nextQuestion'
+      'click .next_question': 'nextQuestion',
       'click input[name="question_options"]': 'answerSelected'
     },
 
