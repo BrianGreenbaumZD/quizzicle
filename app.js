@@ -4,11 +4,10 @@
     window: this,
 
     question: 'QUESTION',
-    question_id: 9,
+    question_id: 8,
     question_object_id: '',
     choices: [],
     selected_choice_id: -1,
-    question_object: '',
 
     requests: {
 
@@ -58,7 +57,8 @@
 
     goToAnswerView: function() {
       this.switchTo('answer', {
-        selected_choice_id: this.selected_choice_id
+        selected_choice_id: this.selected_choice_id,
+        score: this.score
       });
     },
 
@@ -92,13 +92,13 @@
       var query = new Parse.Query(Choices);
       query.equalTo('question_id', qid);
       query.find({ success: function(results) {
-
         var choices = [];
         for(var i = 0; i < results.length; i ++) {
-          var choice = { id: results[i].attributes.ID, description: results[i].attributes.choice_description };
+          var choice_attr = results[i].attributes;
+          var choice = { id: choice_attr.ID, description: choice_attr.choice_description };
           choices.push(choice);
+          if (choice_attr.correct_answer) this.correct_choice_id = choice_attr.ID;
         }
-
         this.choices = choices;
         this.goToQuestionView();
       }.bind(this) });
@@ -107,13 +107,15 @@
     submitAnswer: function() {
       event.preventDefault();
       this.selected_choice_id = this.$('input[name="question_options"]:checked').val();
+      this.score = (this.selected_choice_id == this.correct_choice_id) ? 1 : 0;
 
       var UserAnswer = Parse.Object.extend('user_answers');
       var userAnswer = new UserAnswer();
 
       userAnswer.set("choice_id", parseInt(this.selected_choice_id));
-      // userAnswer.set("question_id", this.question_object_id);
-      userAnswer.set("user_id", this.currentUser().id());  
+      userAnswer.set("question_id", this.question_object_id);
+      userAnswer.set("user_id", this.currentUser().id()); 
+      userAnswer.set("score", this.score); 
 
       userAnswer.save(null, {
         success: function(userAnswer) {
@@ -122,7 +124,6 @@
 
         error: function(userAnswer, error) {
           console.log("We got some problems");
-          debugger
         }.bind(this)
 
       });

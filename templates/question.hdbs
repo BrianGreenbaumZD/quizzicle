@@ -3,7 +3,7 @@
   <p id="question_text">{{question}}</p>
 
 
-  <div id="option_group">
+  <div id="option_group" data-foo="{{foo}}">
     {{#each choices}}
     <label class="radio">
       <input type="radio" name="question_options" id="option_{{id}}" value="{{id}}">{{description}}
