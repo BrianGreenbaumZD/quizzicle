@@ -60,6 +60,18 @@
     line-height: 26px;
   }
 
+.inform {
+  text-align: center;
+  padding-bottom: 10px;
+
+  p {
+    font-size: 18px;
+    padding: 40px 80px;
+    text-align: center;
+    line-height: 26px;
+  }
+}
+
   .links {
     padding: 10px;
     margin-top: 50px;

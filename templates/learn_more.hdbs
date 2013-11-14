@@ -1,1 +1,7 @@
-<h1>Learn More</h1>
+
+<div class="home">
+<h2>Learn more</h2>
+
+  <p ><strong>Quizzicle</strong> tests your knowledge in using Zendesk and being a badass in customer support. Challenge other Zendesk agents and be the <strong>baddest</strong> of the bunch!</p>
+
+      <a href="" class='start btn-info'>Take your quiz now!</a>
