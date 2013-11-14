@@ -1,11 +1,14 @@
 <div class="answer">
 
-  
-  <p>You chose: {{selected_choice_id}}</p>
+  {{#if score}}
+    <h2 id="answer_text" class="correct">Correct!</h2>
+    <p id="points">You received <strong>{{score}} points.</strong></p>
+  {{else}}
+    <h2 id="answer_text" class="incorrect">Incorrect!</h2>
+    <a href="" class='start btn-info'>Try Again</a>
+  {{/if}}
 
-  <p id="answer_text" class="correct">Correct!</p>
-
-  <p id="points">You received <strong>10</strong></p>
+  <p id="total_score">Your total score to date is <strong>{{total_score}}</strong>.<p>
 
 
 </div>

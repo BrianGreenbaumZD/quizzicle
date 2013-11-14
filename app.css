@@ -27,6 +27,13 @@
   margin-top: 10px;
 }
 
+.start {
+  line-height: 18px;
+  padding: 7px 50px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
 .home {
   text-align: center;
 
@@ -35,13 +42,6 @@
     padding: 40px 80px;
     text-align: center;
     line-height: 26px;
-  }
-
-  .start {
-    line-height: 18px;
-    padding: 7px 50px;
-    border-radius: 3px;
-    display: inline-block;
   }
 
   .links {
@@ -83,6 +83,30 @@
     display: inline-block;
   }
 
+}
+
+
+.answer {
+  margin: 30px 60px;
+  text-align: center;
+
+  p, #option_group {
+    font-size: 16px;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: bold;
+
+  }  
+
+  .correct {
+    color: green;
+  }
+
+  .incorrect {
+    color: red;
+  }
 }
 
 

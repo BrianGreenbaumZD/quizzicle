@@ -8,6 +8,7 @@
     question_object_id: '',
     choices: [],
     selected_choice_id: -1,
+    user_total_score: 0,
 
     requests: {
 
@@ -41,6 +42,20 @@
       Parse.initialize("YhoFdKDxkA9UPKGmHuFWhuJVmrDcYWCoUdhzPkHl", "N6cNSC5YDS9kJe6lECGXP1CnDd32xvFdGKMGsR6o");
     },
 
+    calculateTotalScore: function (userAnswer) {
+      var UserAnswers = Parse.Object.extend("user_answers");
+      var query = new Parse.Query(UserAnswers);
+      query.equalTo("user_id", this.currentUser().id());
+      query.find({ success: function(results) {
+        // this.user_total_score = 0;
+        for (var i = 0; i < results.length; i++) {
+          console.log(results[i].attributes.score)
+          this.user_total_score = parseInt(results[i].attributes.score) + this.user_total_score;
+        }
+        this.goToAnswerView(userAnswer);
+      }.bind(this) });
+    },
+
     onStartClick: function(event) {
       event.preventDefault();
       console.log('Clicked Start Button');
@@ -56,9 +71,11 @@
     },
 
     goToAnswerView: function() {
+      event.preventDefault();
       this.switchTo('answer', {
         selected_choice_id: this.selected_choice_id,
-        score: this.score
+        score: this.score,
+        total_score: this.user_total_score
       });
     },
 
@@ -107,7 +124,7 @@
     submitAnswer: function() {
       event.preventDefault();
       this.selected_choice_id = this.$('input[name="question_options"]:checked').val();
-      this.score = (this.selected_choice_id == this.correct_choice_id) ? 1 : 0;
+      this.score = (this.selected_choice_id == this.correct_choice_id) ? 10 : 0;
 
       var UserAnswer = Parse.Object.extend('user_answers');
       var userAnswer = new UserAnswer();
@@ -119,7 +136,7 @@
 
       userAnswer.save(null, {
         success: function(userAnswer) {
-          this.goToAnswerView(userAnswer);
+          this.calculateTotalScore(userAnswer);
         }.bind(this), 
 
         error: function(userAnswer, error) {
